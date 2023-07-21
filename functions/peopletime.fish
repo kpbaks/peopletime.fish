@@ -36,7 +36,7 @@ $(set_color green)	-l$(set_color normal), $(set_color green)--long$(set_color no
     set -l t (math --scale=0 $ms / 1000)
 
     # NOTE: <kpbaks 2023-07-19 11:12:58> --scale=0 is used to round the result
-    set -l years (math --scale=0 $t / 60 / 60 / 24 / 7 / 4 / 12)
+    set -l years (math --scale=0 $t / 60 / 60 / 24 / 365)
     if test $years -gt 0
         if not set --query _flag_long
             set --append str $years"y"
@@ -150,29 +150,5 @@ $(set_color green)	-l$(set_color normal), $(set_color green)--long$(set_color no
 
 
     string join -- ' ' $str
-
-    # set -l secs (math --scale=0 $ms / 1000)
-    # set -l mins (math --scale=0 $secs / 60)
-    # set -l hours (math --scale=0 $mins / 60)
-    # set -l days (math --scale=0 $hours / 24)
-    # set -l weeks (math --scale=0 $days / 7)
-    # set -l months (math --scale=0 $weeks / 4)
-    # set -l years (math --scale=0 $months / 12)
-    #
-    # set -l out ""
-    #
-    #
-    #
-    # test $years -gt 0; and set -a out "$years y"
-    # test $months -gt 0; and set -a out "$months m"
-    # test $weeks -gt 0; and set -a out "$weeks w"
-    # test $days -gt 0; and set -a out "$days d"
-    # test $hours -gt 0; and set -a out "$hours h"
-    # test $mins -gt 0; and set -a out "$mins m"
-    # test $secs -gt 0; and set -a out "$secs s"
-    # test $ms -gt 0; and set -a out "$ms ms"
-    #
-    #
-    # echo $out
 
 end
